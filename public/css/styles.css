@@ -1,6 +1,195 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+body {
+font-family: Arial, Helvetica, sans-serif;
+color: #333;
+background-color: #fff;
+margin: 0;
+padding: 0;
 }
+
+h1, h2, h3 {
+font-family: "Poppins", sans-serif;
+color: #0a3d62;
+margin-bottom: 0.5em;
+}
+
+.top-bar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #ffffff;
+padding: 10px 20px;
+border-bottom: 3px solid #000;
+}
+.top-bar h1 {
+color: #003366;
+font-size: 1.8rem;
+margin: 0;
+}
+.account-link {
+color: #f39c12;
+text-decoration: none;
+font-weight: 600;
+}
+.account-link:hover {
+text-decoration: underline;
+}
+
+.main-nav {
+background-color: #003366;
+padding: 10px 0;
+}
+.main-nav ul {
+list-style: none;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin: 0;
+padding: 0;
+}
+.main-nav li {
+margin: 0 1em;
+}
+.main-nav a {
+color: #fff;
+text-decoration: none;
+font-weight: 500;
+}
+.main-nav a:hover {
+color: #00bcd4;
+}
+
+.hero {
+position: relative;
+height: 450px;
+background: url("/images/site/hero-car.jpg") center/cover no-repeat;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+color: #fff;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+}
+.hero::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.5);
+}
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 400px;
+    margin-left: 10%;
+    background: rgba(0,0,0,0.4);
+    padding: 25px;
+    border-radius: 8px;
+}
+.hero-text h2 {
+color: #00bcd4;
+margin-bottom: 1rem;
+}
+.hero-text ul {
+list-style: none;
+padding: 0;
+margin: 1rem 0;
+}
+
+.btn-own {
+display: inline-block;
+background-color: #0074a6;
+margin-top: 10x;
+color: #fff;
+text-decoration: none;
+padding: 10px 20px;
+border-radius: 5px;
+}
+.btn-own:hover {
+background-color: #005f85;
+}
+.info-sections {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+margin: 3rem auto;
+padding: 0 2rem;
+max-width: 1200px;
+}
+.upgrades, .reviews {
+flex: 1;
+background-color: #f4f9ff;
+border-radius: 8px;
+padding: 1.5rem;
+}
+.upgrades-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+.upgrades-grid div {
+text-align: center;
+background-color: #e6f2ff;
+padding: 10px;
+border-radius: 5px;
+}
+.upgrades-grid img {
+width: 100px;
+height: 100px;
+}
+.upgrades-grid a {
+display: block;
+margin-top: 5px;
+color: #003366;
+font-weight: bold;
+text-decoration: none;
+}
+.reviews ul {
+list-style-type: none;
+padding-left: 0;
+}
+.reviews li {
+margin-bottom: 10px;
+font-style: italic;
+}
+.reviews span {
+color: #f39c12;
+font-weight: bold;
+}
+
+footer {
+background-color: #003366;
+color: #fff;
+text-align: center;
+padding: 10px;
+font-size: 0.9em;
+}
+
+@media (min-width: 768px) {
+.hero {
+height: 90vh;
+justify-content: flex-start;
+text-align: left;
+padding-left: 6rem;
+}
+.hero-overlay {
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.info-sections {
+flex-direction: row;
+align-items: flex-start;
+}
+.hero-text h2 {
+font-size: 3rem;
+}
+.hero-text li {
+font-size: 1.25rem;
+}
+}
+
+

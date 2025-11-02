@@ -13,6 +13,7 @@ app.set("layout", "./layouts/layout");
 app.use(express.static(path.join(__dirname, "public")));
 
 const staticRoutes = require("./routes/static");
+const { title } = require("process");
 app.use(staticRoutes);
 
 
