@@ -26,7 +26,8 @@ font-size: 1.8rem;
 margin: 0;
 }
 .account-link {
-color: #f39c12;
+color: #002244;
+background-color: #f7f9fc;
 text-decoration: none;
 font-weight: 600;
 }
@@ -154,9 +155,9 @@ padding-left: 0;
 .reviews li {
 margin-bottom: 10px;
 font-style: italic;
+color: #003366;
 }
 .reviews span {
-color: #f39c12;
 font-weight: bold;
 }
 
@@ -189,6 +190,16 @@ font-size: 3rem;
 }
 .hero-text li {
 font-size: 1.25rem;
+}
+body {
+    background-image: 
+      linear-gradient(45deg, #e6f2ff 25%, transparent 25%),
+      linear-gradient(-45deg, #e6f2ff 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e6f2ff 75%),
+      linear-gradient(-45deg, transparent 75%, #e6f2ff 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px, 20px -20px, -20px 0;
+    background-attachment: fixed;
 }
 }
 
