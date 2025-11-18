@@ -307,6 +307,71 @@ font-size: 0.9em;
   background: #0056b3;
 }
 
+.container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+.message { padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
+.message.error { background: #ffe6e6; color: #8a1f1f; border: 1px solid #f5c6c6; }
+.message.success { background: #e6fff0; color: #0b7a3a; border: 1px solid #bfeecf; }
+
+.form-row { margin-bottom: 0.9rem; }
+.form-row label { display: block; margin-bottom: 0.25rem; font-weight: 600; }
+.form-row input, .form-row select, .form-row textarea {
+  width: 100%; padding: 0.5rem; border: 1px solid #d1d7de; border-radius: 6px;
+}
+
+.vehicle-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #f4f9ff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+.vehicle-form .form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+}
+
+.vehicle-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #003366;
+}
+
+.vehicle-form input,
+.vehicle-form select,
+.vehicle-form textarea {
+  padding: 0.6rem;
+  border: 1px solid #c9d3e1;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.vehicle-form textarea {
+  min-height: 120px;
+}
+
+.vehicle-form button {
+  margin-top: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  padding: 12px;
+}
+
+.delete-btn {
+  background-color: #b00020;
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  border: none;
+}
+.delete-btn:hover {
+  background-color: #d00036;
+}
+
+
+
 
 
 @media (min-width: 768px) {

@@ -1,17 +1,27 @@
-const express = require("express");
-const router = express.Router();
-const invController = require("../controllers/invController");
+const express = require("express")
+const router = express.Router()
+const invController = require("../controllers/invController")
+const validation = require("../middleware/validationMiddleware")
 
-router.get("/type/:typeId", invController.buildByTypeId);
+router.get("/", invController.buildManagement)
 
-router.get("/detail/:invId", invController.buildVehicleDetail);
+router.get("/type/:classificationId", invController.buildByClassificationId)
 
-router.get("/trigger-error", (req, res, next) => {
-  try {
-    throw new Error("Intentional server error for testing (500)");
-  } catch (err) {
-    next(err); 
-  }
-});
+router.get("/detail/:invId", invController.buildVehicleDetail)
 
-module.exports = router;
+router.get("/add-classification", invController.buildAddClassification)
+router.post("/add-classification",
+  validation.validateClassification,
+  invController.createClassification
+)
+
+router.get("/add-inventory", invController.buildAddInventory)
+router.post("/add-inventory",
+  validation.validateInventory,
+  invController.createInventory
+)
+
+router.get("/delete/:inv_id", invController.buildDeleteVehicle);
+router.post("/delete", invController.deleteVehicle);
+
+module.exports = router

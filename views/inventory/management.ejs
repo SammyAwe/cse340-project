@@ -1,0 +1,15 @@
+<main class="container">
+<h1><%= title %></h1>
+<p>Use the options below to manage the inventory.</p>
+
+
+<% if (typeof notice !== "undefined") { %>
+<p class="notice"><%= notice %></p>
+<% } %>
+
+
+<ul>
+<li><a href="/inv/add-classification">Add New Classification</a></li>
+<li><a href="/inv/add-inventory">Add New Vehicle</a></li>
+</ul>
+</main>

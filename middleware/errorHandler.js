@@ -1,22 +1,19 @@
-function notFoundHandler(req, res, next) {
-  const err = new Error(`Not Found - ${req.originalUrl}`)
-  err.status = 404
-  next(err)
-}
+const notFoundHandler = (req, res, next) => {
+  res.status(404).render("errors/error", {
+    title: "404 - Page Not Found",
+    message: `The page '${req.originalUrl}' does not exist.`,
+    nav: res.locals.nav
+  });
+};
 
-function errorHandler(err, req, res, next) {
-  const status = err.status || 500
-  console.error(err.stack || err.message)
+const errorHandler = (err, req, res, next) => {
+  console.error("🔥 SERVER ERROR:", err);
 
-  res.status(status)
-  res.render("error", {
-    title: `${status} - ${status === 404 ? "Page Not Found" : "Server Error"}`,
-    message: err.message,
-    status
-  })
-}
+  res.status(err.status || 500).render("errors/error", {
+    title: "Server Error",
+    message: err.message || "Something unexpected happened.",
+    nav: res.locals.nav
+  });
+};
 
-module.exports = {
-  notFoundHandler,
-  errorHandler
-}
+module.exports = { notFoundHandler, errorHandler };
