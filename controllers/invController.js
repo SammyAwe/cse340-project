@@ -1,19 +1,21 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
 
-
 async function buildManagement(req, res, next) {
   try {
     const nav = await utilities.buildNav()
+    const data = await invModel.getClassifications() 
+
     res.render("inventory/management", {
-      title: "Vehicle Management",
+      title: "Inventory Management",
       nav,
-      errors: null
+      classifications: data.rows
     })
   } catch (error) {
     next(error)
   }
 }
+
 
 
 async function buildByClassificationId(req, res, next) {
@@ -226,6 +228,39 @@ async function deleteVehicle(req, res, next) {
   return res.redirect("/inv/");
 }
 
+async function buildDeleteClassification(req, res, next) {
+  const classification_id = parseInt(req.params.id)
+  const nav = await utilities.buildNav()
+
+  const classification = await invModel.getClassificationById(classification_id)
+
+  if (!classification) {
+    req.flash("notice", "Classification not found.")
+    return res.redirect("/inv")
+  }
+
+  res.render("inventory/delete-classification", {
+    title: "Delete Classification",
+    nav,
+    classification
+  })
+}
+
+async function deleteClassification(req, res, next) {
+  const classification_id = parseInt(req.body.classification_id)
+
+  const result = await invModel.deleteClassification(classification_id)
+
+  if (result) {
+    req.flash("notice", "Classification deleted successfully.")
+    return res.redirect("/inv")
+  }
+
+  req.flash("notice", "Delete failed.")
+  res.redirect("/inv")
+}
+
+
 
 
 module.exports = {
@@ -237,6 +272,9 @@ module.exports = {
   buildAddInventory,
   createInventory,
   buildDeleteVehicle,
-  deleteVehicle
+  deleteVehicle,
+  buildDeleteClassification,
+  deleteClassification
+
 }
 

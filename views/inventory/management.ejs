@@ -1,15 +1,18 @@
 <main class="container">
-<h1><%= title %></h1>
-<p>Use the options below to manage the inventory.</p>
+  <h1>Inventory Management</h1>
 
+  <ul>
+    <% classifications.forEach(classification => { %>
+      <li>
+        <%= classification.classification_name %>
+        |
+        <a href="/inv/type/<%= classification.classification_id %>">View</a>
+        |
+        <a href="/inv/classification/delete/<%= classification.classification_id %>">Delete</a>
+      </li>
+    <% }) %>
+  </ul>
 
-<% if (typeof notice !== "undefined") { %>
-<p class="notice"><%= notice %></p>
-<% } %>
-
-
-<ul>
-<li><a href="/inv/add-classification">Add New Classification</a></li>
-<li><a href="/inv/add-inventory">Add New Vehicle</a></li>
-</ul>
+  <li><a href="/inv/add-classification">Add New Classification</a></li>
+  <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
 </main>
