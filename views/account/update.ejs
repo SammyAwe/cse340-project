@@ -1,0 +1,27 @@
+<h1><%= title %></h1>
+
+<% if (errors) { %>
+  <div class="message error"><%= errors.join("<br>") %></div>
+<% } %>
+
+<form action="/account/update-info" method="POST">
+  <input type="hidden" name="account_id" value="<%= account.account_id %>">
+  <label for="first">First Name</label>
+  <input type="text" name="account_firstname" value="<%= account.account_firstname %>" required>
+
+  <label for="last">Last Name</label>
+  <input type="text" name="account_lastname" value="<%= account.account_lastname %>" required>
+
+  <label for="email">Email</label>
+  <input type="email" name="account_email" value="<%= account.account_email %>" required>
+
+  <button type="submit">Update Account</button>
+</form>
+
+<form action="/account/update-password" method="POST">
+  <input type="hidden" name="account_id" value="<%= account.account_id %>">
+  <label for="password">New Password</label>
+  <input type="password" name="account_password" placeholder="Enter new password" required>
+  <small>Password must be at least 8 characters, include letters and numbers.</small>
+  <button type="submit">Change Password</button>
+</form>

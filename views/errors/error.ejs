@@ -1,0 +1,9 @@
+<! -- error.ejs -->
+<section class="error-page">
+  <div class="error-card">
+    <h1><%= title %></h1>
+    <p class="error-code">Error <%= typeof status !== 'undefined' ? status : '' %></p>
+    <p><%= message %></p>
+    <a href="/" class="btn-own">Return Home</a>
+  </div>
+</section>

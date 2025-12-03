@@ -1,0 +1,300 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: "Poppins", sans-serif;
+  color: #0a3d62;
+  margin-bottom: 0.5em;
+}
+
+
+
+#top-header {
+  background-color: #003366;
+  color: #fff;
+  padding: 0.75rem 1rem;
+}
+
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#top-header .brand a {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  text-decoration: none;
+}
+#top-header .brand a:hover {
+  color: #00bcd4;
+}
+
+#top-header .nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#top-header .nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#top-header .nav a:hover {
+  color: #00bcd4;
+  border-bottom: 2px solid #00bcd4;
+  padding-bottom: 2px;
+}
+
+#top-header .account-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+#top-header .account-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#top-header .account-links a:hover {
+  color: #00bcd4;
+}
+
+
+.account-link {
+  color: #002244;
+  background-color: #f7f9fc;
+  text-decoration: none;
+  font-weight: 600;
+}
+.account-link:hover {
+  text-decoration: underline;
+}
+
+
+.hero {
+  position: relative;
+  height: 450px;
+  background: url("/images/site/hero-car.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 400px;
+  margin-left: 10%;
+  background: rgba(0,0,0,0.4);
+  padding: 25px;
+  border-radius: 8px;
+}
+.hero-text h2 {
+  color: #00bcd4;
+  margin-bottom: 1rem;
+}
+.hero-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.btn-own {
+  display: inline-block;
+  background-color: #0074a6;
+  margin-top: 10px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.btn-own:hover {
+  background-color: #005f85;
+}
+
+.info-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  max-width: 1200px;
+}
+.upgrades, .reviews {
+  flex: 1;
+  background-color: #f4f9ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.upgrades-grid div {
+  text-align: center;
+  background-color: #e6f2ff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.upgrades-grid img {
+  width: 100px;
+  height: 100px;
+}
+.upgrades-grid a {
+  display: block;
+  margin-top: 5px;
+  color: #003366;
+  font-weight: bold;
+  text-decoration: none;
+}
+.reviews ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.reviews li {
+  margin-bottom: 10px;
+  font-style: italic;
+  color: #003366;
+}
+.reviews span {
+  font-weight: bold;
+}
+
+footer {
+  background-color: #003366;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+}
+.footer-link {
+  color: #ffffff; 
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.footer-link:hover,
+.footer-link:focus {
+  color: #00bcd4; 
+  text-decoration: underline;
+}
+
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+.vehicle-detail__media img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.vehicle-detail__info {
+  padding: 0.5rem;
+}
+.vehicle-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  color: #003366;
+}
+.vehicle-price {
+  font-size: 1.4rem;
+  color: #0074a6;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+.vehicle-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 0.5rem 1rem;
+}
+
+.inv-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+  #top-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav a {
+    padding: 0.25rem 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .vehicle-detail {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .vehicle-detail__media {
+    flex: 1 1 55%;
+    padding-right: 1rem;
+  }
+  .vehicle-detail__info {
+    flex: 1 1 45%;
+  }
+  .vehicle-title { font-size: 2rem; }
+  .vehicle-price { font-size: 1.6rem; }
+
+  body {
+    background-image: 
+      linear-gradient(45deg, #e6f2ff 25%, transparent 25%),
+      linear-gradient(-45deg, #e6f2ff 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e6f2ff 75%),
+      linear-gradient(-45deg, transparent 75%, #e6f2ff 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px, 20px -20px, -20px 0;
+    background-attachment: fixed;
+  }
+}

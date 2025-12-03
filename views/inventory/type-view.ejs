@@ -1,0 +1,24 @@
+<main class="container">
+<h1><%= title %></h1>
+
+
+<% if (message) { %>
+<p class="notice"><%= message %></p>
+<% } %>
+
+
+<% if (data.length > 0) { %>
+<ul class="vehicle-list">
+<% data.forEach(v => { %>
+<li>
+<a href="/inv/detail/<%= v.inv_id %>">
+<img src="<%= v.inv_thumbnail %>" alt="Thumbnail of <%= v.inv_make %> <%= v.inv_model %>">
+<p><%= v.inv_year %> <%= v.inv_make %> <%= v.inv_model %></p>
+</a>
+</li>
+<% }) %>
+</ul>
+<% } else { %>
+<p>No vehicles found in this classification.</p>
+<% } %>
+</main>

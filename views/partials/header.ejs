@@ -1,0 +1,26 @@
+<header id="top-header">
+  <nav class="main-nav">
+    
+    <div class="brand">
+      <a href="/">CSE Motors</a>
+    </div>
+
+    
+   <div class="nav">
+   <%- nav %>
+   </div>
+    
+    <ul class="account-links">
+      <% if (loggedin) { %>
+        <li>
+          <a href="/account/">
+            Welcome <%= accountData.account_firstname %>
+          </a>
+        </li>
+        <li><a href="/account/logout">Logout</a></li>
+      <% } else { %>
+        <li><a href="/account/login">My Account</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
