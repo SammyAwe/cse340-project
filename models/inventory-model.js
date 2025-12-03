@@ -1,11 +1,11 @@
-const pool = require("../database/connection"); // Make sure this exports a Pool instance
+const pool = require("../database/connection"); 
 
 
 async function getClassifications() {
   try {
     const sql = `SELECT * FROM public.classification ORDER BY classification_name`;
     const result = await pool.query(sql);
-    return result.rows; // returns array of rows
+    return result.rows; 
   } catch (error) {
     console.error("getClassifications error:", error);
     return [];

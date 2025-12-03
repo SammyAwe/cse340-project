@@ -1,21 +1,21 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
 
+
 async function buildManagement(req, res, next) {
   try {
     const nav = await utilities.buildNav()
-    const data = await invModel.getClassifications() 
+    const classifications = await invModel.getClassifications()
 
     res.render("inventory/management", {
       title: "Inventory Management",
       nav,
-      classifications: data.rows
+      classifications
     })
   } catch (error) {
     next(error)
   }
 }
-
 
 
 async function buildByClassificationId(req, res, next) {
@@ -65,7 +65,7 @@ async function buildVehicleDetail(req, res, next) {
     const vehicleHtml = `
       <section class="vehicle-detail">
         <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
-        <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+        <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}">
         <p><strong>Price:</strong> $${new Intl.NumberFormat().format(vehicle.inv_price)}</p>
         <p><strong>Mileage:</strong> ${new Intl.NumberFormat().format(vehicle.inv_miles)} miles</p>
         <p><strong>Description:</strong> ${vehicle.inv_description}</p>
@@ -86,7 +86,7 @@ async function buildVehicleDetail(req, res, next) {
 }
 
 
-async function buildAddClassification(req, res, next) {
+async function buildAddClassification(req, res) {
   const nav = await utilities.buildNav()
   res.render("inventory/add-classification", {
     title: "Add New Classification",
@@ -96,8 +96,7 @@ async function buildAddClassification(req, res, next) {
   })
 }
 
-
-async function createClassification(req, res, next) {
+async function createClassification(req, res) {
   const { classification_name } = req.body
   const nav = await utilities.buildNav()
 
@@ -109,7 +108,7 @@ async function createClassification(req, res, next) {
   }
 
   req.flash("notice", "Failed to create classification. Try again.")
-  return res.status(500).render("inventory/add-classification", {
+  res.status(500).render("inventory/add-classification", {
     title: "Add New Classification",
     nav,
     errors: null,
@@ -121,15 +120,14 @@ async function createClassification(req, res, next) {
 async function buildAddInventory(req, res, next) {
   try {
     const nav = await utilities.buildNav()
-    const data = await invModel.getClassifications()
+    const classifications = await invModel.getClassifications()
 
     res.render("inventory/add-inventory", {
       title: "Add New Vehicle",
       nav,
       errors: null,
-      classifications: data,
+      classifications,
 
-      
       inv_make: "",
       inv_model: "",
       inv_year: "",
@@ -146,7 +144,6 @@ async function buildAddInventory(req, res, next) {
   }
 }
 
-
 async function createInventory(req, res, next) {
   const {
     inv_make, inv_model, inv_year, inv_description,
@@ -155,7 +152,7 @@ async function createInventory(req, res, next) {
   } = req.body
 
   const nav = await utilities.buildNav()
-  const data = await invModel.getClassifications()
+  const classifications = await invModel.getClassifications()
 
   const result = await invModel.addInventory({
     inv_make,
@@ -176,13 +173,12 @@ async function createInventory(req, res, next) {
   }
 
   req.flash("notice", "Failed to add vehicle.")
-  return res.status(500).render("inventory/add-inventory", {
+  res.status(500).render("inventory/add-inventory", {
     title: "Add New Vehicle",
     nav,
     errors: null,
-    classifications: data,
+    classifications,
 
-    
     inv_make,
     inv_model,
     inv_year,
@@ -197,7 +193,7 @@ async function createInventory(req, res, next) {
 }
 
 
-async function buildDeleteVehicle(req, res, next) {
+async function buildDeleteVehicle(req, res) {
   const inv_id = parseInt(req.params.inv_id)
   const vehicle = await invModel.getInventoryById(inv_id)
 
@@ -213,8 +209,7 @@ async function buildDeleteVehicle(req, res, next) {
   })
 }
 
-
-async function deleteVehicle(req, res, next) {
+async function deleteVehicle(req, res) {
   const inv_id = parseInt(req.body.inv_id)
   const result = await invModel.deleteVehicle(inv_id)
 
@@ -224,11 +219,11 @@ async function deleteVehicle(req, res, next) {
   }
 
   req.flash("notice", "Delete failed. Try again.")
-  return res.redirect("/inv/")
+  res.redirect("/inv/")
 }
 
 
-async function buildDeleteClassification(req, res, next) {
+async function buildDeleteClassification(req, res) {
   const classification_id = parseInt(req.params.id)
   const nav = await utilities.buildNav()
 
@@ -246,7 +241,7 @@ async function buildDeleteClassification(req, res, next) {
   })
 }
 
-async function deleteClassification(req, res, next) {
+async function deleteClassification(req, res) {
   const classification_id = parseInt(req.body.classification_id)
 
   const result = await invModel.deleteClassification(classification_id)
@@ -273,7 +268,4 @@ module.exports = {
   deleteVehicle,
   buildDeleteClassification,
   deleteClassification
-
 }
-
-
