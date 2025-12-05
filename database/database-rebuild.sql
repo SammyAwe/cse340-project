@@ -75,7 +75,7 @@ VALUES
 
 
 ALTER TYPE public.account_type
-    OWNER TO cse340_database_nl4d_user;
+    OWNER TO cse340_database_sozz_user;
 
 UPDATE public.inventory
 SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')

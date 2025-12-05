@@ -1,22 +1,19 @@
 const invModel = require("../models/inventory-model");
 const utilities = require("../utilities");
 
-
-const validateClassification = async (req, res, next) => {
+const validateClassification = async (req, res, next) => { 
   const { classification_name } = req.body;
   let errors = [];
 
-  if (!classification_name || classification_name.trim().length === 0) {
+  if (!classification_name || classification_name.length === 0) {
     errors.push({ msg: "Classification name is required." });
   }
 
-  if (classification_name && classification_name.length < 3) {
-    errors.push({ msg: "Classification name must be at least 3 characters." });
+ 
+  if (classification_name && classification_name.length < 1) {
+    errors.push({ msg: "Classification name must be at least 1 character." });
   }
 
-  if (classification_name && !/^[A-Za-z]+$/.test(classification_name)) {
-    errors.push({ msg: "Classification name must contain only letters." });
-  }
 
   if (errors.length > 0) {
     const nav = await utilities.buildNav();
