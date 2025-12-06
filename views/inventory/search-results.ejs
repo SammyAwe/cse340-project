@@ -1,0 +1,32 @@
+<main class="container">
+  <h1><%= title %></h1>
+
+  <% if (message) { %>
+    <p class="notice"><%= message %></p>
+  <% } %>
+
+  <% if (query) { %>
+    <p>Showing results for: "<strong><%= query %></strong>"</p>
+  <% } %>
+
+  <% if (results && results.length > 0) { %>
+    <ul class="inv-list">
+      <% results.forEach(v => { %>
+        <li class="inv-item">
+          <div class="inv-thumb">
+            <a href="/inv/detail/<%= v.inv_id %>">
+              <img src="<%= v.inv_thumbnail || v.inv_image || '/images/vehicles/no-image-tn.jpg' %>" alt="<%= v.inv_make %> <%= v.inv_model %>">
+            </a>
+          </div>
+          <div class="inv-details">
+            <h2><a href="/inv/detail/<%= v.inv_id %>"><%= v.inv_year %> <%= v.inv_make %> <%= v.inv_model %></a></h2>
+            <p><strong>Classification:</strong> <%= v.classification_name %></p>
+            <p><strong>Price:</strong> $<%= new Intl.NumberFormat().format(v.inv_price || 0) %></p>
+            <p><%= (v.inv_description || "").substring(0, 200) %>...</p>
+            <p><a class="detail-link" href="/inv/detail/<%= v.inv_id %>">View details</a></p>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</main>

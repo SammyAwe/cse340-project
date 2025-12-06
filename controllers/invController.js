@@ -255,6 +255,35 @@ async function deleteClassification(req, res) {
   res.redirect("/inv")
 }
 
+async function search(req, res, next) {
+  try {
+    const q = (req.query.q || "").trim();
+    const nav = await utilities.buildNav();
+
+    if (!q) {
+      return res.render("inventory/search-results", {
+        title: "Search Vehicles",
+        nav,
+        query: "",
+        results: [],
+        message: "Please enter search keywords."
+      });
+    }
+
+    const results = await invModel.searchVehicles(q);
+
+    return res.render("inventory/search-results", {
+      title: `Search results for "${q}"`,
+      nav,
+      query: q,
+      results, 
+      message: results.length === 0 ? "No vehicles match your search." : null
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 
 module.exports = {
   buildManagement,
@@ -267,5 +296,6 @@ module.exports = {
   buildDeleteVehicle,
   deleteVehicle,
   buildDeleteClassification,
-  deleteClassification
+  deleteClassification,
+  search
 }

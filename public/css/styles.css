@@ -191,6 +191,32 @@ h1, h2, h3 {
   font-weight: bold;
 }
 
+.search-form {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.search-form input[type="search"] {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  min-width: 180px;
+}
+
+.search-form button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #00bcd4;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-form button:hover { opacity: 0.95; }
+
 footer {
   background-color: #003366;
   color: #fff;

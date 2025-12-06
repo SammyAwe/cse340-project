@@ -5,6 +5,11 @@
       <a href="/">CSE Motors</a>
     </div>
 
+    <form action="/inv/search" method="get" class="search-form" role="search" aria-label="Search vehicles">
+    <input type="search" name="q" placeholder="Search vehicles..." value="<%= typeof query !== 'undefined' ? query : '' %>" required>
+    <button type="submit">Search</button>
+    </form>
+
     
    <div class="nav">
    <%- nav %>

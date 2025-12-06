@@ -8,6 +8,7 @@ const { checkEmployee } = require("../middleware/checkEmployee");
 
 router.get("/", checkEmployee, invController.buildManagement);
 
+router.get("/search", invController.search);
 
 router.get("/type/:classificationId", invController.buildByClassificationId);
 

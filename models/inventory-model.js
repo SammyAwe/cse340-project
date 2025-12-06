@@ -12,6 +12,28 @@ async function getClassifications() {
   }
 }
 
+async function searchVehicles(keyword) {
+  try {
+    const term = `%${keyword}%`;
+    const sql = `
+    SELECT inv.*, c.classification_name
+    FROM public.inventory AS inv
+    JOIN public.classification AS c
+    ON inv.classification_id = c.classification_id
+    WHERE inv.inv_make ILIKE $1
+    OR inv.inv_model ILIKE $1
+    OR inv.inv_description ILIKE $1
+    OR inv.inv_color ILIKE $1
+    OR c.classification_name ILIKE $1
+    ORDER BY inv.inv_make, inv.inv_model;
+    `;
+    const result = await pool.query(sql, [term]);
+    return result.rows;
+  } catch (error) {
+    console.error ("searchVehicles error:", error);
+    return [];
+  }
+}
 
 async function getInventoryByClassificationId(classification_id) {
   try {
@@ -123,6 +145,7 @@ async function deleteClassification(classification_id) {
 
 module.exports = {
   getClassifications,
+  searchVehicles,
   getInventoryByClassificationId,
   getInventoryById,
   addClassification,
